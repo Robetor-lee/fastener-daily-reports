@@ -3,630 +3,482 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>紧固件行业日报 | Fastener Daily Intelligence</title>
+<title>紧固件行业日报 | Fastener Daily</title>
 <style>
 :root {
-  --bg: #f0f2f5;
-  --card-bg: #ffffff;
-  --text: #1a1a2e;
-  --text-secondary: #6b7280;
-  --accent: #e94560;
-  --accent-hover: #d63851;
-  --border: #e5e7eb;
-  --header-bg: #0f172a;
-  --header-text: #f1f5f9;
+  --bg: #f0f2f5; --card-bg: #fff;
+  --text: #1a1a2e; --text2: #6b7280;
+  --accent: #e94560; --border: #e5e7eb;
+  --header-bg: #0f172a; --header-text: #f1f5f9;
   --shadow: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
   --radius: 12px;
-  --radius-sm: 8px;
-  --cat-1: #3b82f6;
-  --cat-2: #10b981;
-  --cat-3: #f59e0b;
-  --cat-4: #8b5cf6;
+  --c1: #3b82f6; --c2: #10b981; --c3: #f59e0b; --c4: #8b5cf6;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
-  background: var(--bg); color: var(--text); line-height: 1.6;
-  min-height: 100vh;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
 
-/* ===== HEADER ===== */
-header {
-  background: var(--header-bg); color: var(--header-text);
-  position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
-}
-.header-inner {
-  width: 100%; padding: 14px 32px;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 12px;
-}
-.logo-area { display:flex; align-items:center; gap:14px; }
-.logo-icon {
-  width: 44px; height: 44px;
-  background: linear-gradient(135deg, var(--accent), #f97316);
-  border-radius: 10px; display:flex; align-items:center; justify-content:center;
-  font-size:22px;
-}
-.logo-text h1 { font-size:1.25rem; font-weight:700; letter-spacing:-0.3px; }
-.logo-text span { font-size:0.75rem; opacity:0.6; }
-.header-stats { display:flex; gap:24px; font-size:0.85rem; }
-.header-stats .stat { text-align:center; }
-.header-stats .stat-num { font-size:1.3rem; font-weight:700; color:var(--accent); }
-.header-stats .stat-label { opacity:0.6; font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; }
-.search-box {
-  display:flex; align-items:center; background:rgba(255,255,255,0.1);
-  border-radius:20px; padding:6px 16px; transition:background 0.2s;
-}
-.search-box:focus-within { background:rgba(255,255,255,0.2); }
-.search-box input {
-  background:none; border:none; color:white; outline:none;
-  font-size:0.9rem; width:200px;
-}
-.search-box input::placeholder { color:rgba(255,255,255,0.5); }
-.search-box button { background:none; border:none; color:rgba(255,255,255,0.7); cursor:pointer; font-size:1rem; }
+/* HEADER */
+header{background:var(--header-bg);color:var(--header-text);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.25)}
+.header-inner{width:100%;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.logo-area{display:flex;align-items:center;gap:14px}
+.logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),#f97316);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.logo-text h1{font-size:1.25rem;font-weight:700}
+.logo-text span{font-size:.75rem;opacity:.6}
+.header-stats{display:flex;gap:24px;font-size:.85rem}
+.header-stats .stat{text-align:center}
+.header-stats .stat-num{font-size:1.3rem;font-weight:700;color:var(--accent)}
+.header-stats .stat-label{opacity:.6;font-size:.7rem;text-transform:uppercase;letter-spacing:1px}
 
-/* ===== CONTROLS ===== */
-.controls-bar {
-  width: 100%; padding: 20px 32px 0;
-  display:flex; gap:12px; flex-wrap:wrap; align-items:center;
-}
-.category-tabs { display:flex; gap:6px; flex-wrap:wrap; flex:1; }
-.cat-tab {
-  padding: 8px 18px; border-radius:20px; border:1.5px solid var(--border);
-  background:var(--card-bg); cursor:pointer; font-size:0.85rem;
-  font-weight:500; transition:all 0.2s; white-space:nowrap;
-  color:var(--text-secondary);
-}
-.cat-tab:hover { border-color:var(--accent); color:var(--accent); }
-.cat-tab.active { background:var(--accent); color:white; border-color:var(--accent); }
-.cat-tab[data-cat="1"].active { background:var(--cat-1); border-color:var(--cat-1); }
-.cat-tab[data-cat="2"].active { background:var(--cat-2); border-color:var(--cat-2); }
-.cat-tab[data-cat="3"].active { background:var(--cat-3); border-color:var(--cat-3); }
-.cat-tab[data-cat="4"].active { background:var(--cat-4); border-color:var(--cat-4); }
-.cat-tab .dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px; vertical-align:middle; }
-.dot-1 { background:var(--cat-1); } .dot-2 { background:var(--cat-2); }
-.dot-3 { background:var(--cat-3); } .dot-4 { background:var(--cat-4); }
-.cat-tab.active .dot { background:white; }
+/* CONTROLS */
+.controls-bar{width:100%;padding:16px 32px 0;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.cat-tabs{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.cat-tab{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--card-bg);cursor:pointer;font-size:.82rem;font-weight:500;transition:all .2s;color:var(--text2);white-space:nowrap}
+.cat-tab:hover{border-color:var(--accent);color:var(--accent)}
+.cat-tab.active{color:#fff;border-color:transparent}
+.cat-tab[data-cat="all"].active{background:var(--accent)}
+.cat-tab[data-cat="1"].active{background:var(--c1)}
+.cat-tab[data-cat="2"].active{background:var(--c2)}
+.cat-tab[data-cat="3"].active{background:var(--c3)}
+.cat-tab[data-cat="4"].active{background:var(--c4)}
+.cat-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.cat-tab.active .cat-dot{background:#fff}
 
-.date-nav { display:flex; align-items:center; gap:8px; }
-.date-nav button {
-  width:32px; height:32px; border-radius:50%; border:1.5px solid var(--border);
-  background:var(--card-bg); cursor:pointer; font-size:1rem;
-  display:flex; align-items:center; justify-content:center; transition:all 0.2s; color:var(--text);
-}
-.date-nav button:hover { border-color:var(--accent); color:var(--accent); }
-.date-nav select {
-  padding:8px 36px 8px 14px; border-radius:20px; border:1.5px solid var(--border);
-  background:var(--card-bg); font-size:0.85rem; cursor:pointer;
-  appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
-  background-repeat:no-repeat; background-position:right 10px center;
-  color:var(--text);
-}
+/* DATE PAGINATOR */
+.date-paginator{display:flex;align-items:center;gap:4px;background:var(--card-bg);border-radius:24px;border:1.5px solid var(--border);padding:3px}
+.date-paginator button{width:34px;height:34px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:1rem;color:var(--text);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.date-paginator button:hover{background:var(--bg);color:var(--accent)}
+.date-paginator .date-display{padding:0 10px;font-size:.85rem;font-weight:600;min-width:100px;text-align:center;cursor:pointer;user-select:none}
+.date-paginator .date-display:hover{color:var(--accent)}
 
-/* ===== MAIN CONTENT ===== */
-.container { width:100%; padding:20px 32px 40px; }
-.date-group { margin-bottom: 24px; }
-.date-group h3 {
-  font-size: 1rem; color: var(--text-secondary);
-  padding: 8px 0; font-weight: 600;
-  border-bottom: 1px solid var(--border); margin-bottom: 16px;
-}
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 20px;
-}
-.article-card {
-  background:var(--card-bg); border-radius:var(--radius);
-  box-shadow:var(--shadow); overflow:hidden;
-  cursor:pointer; transition:all 0.25s;
-  border:1px solid var(--border); display:flex; flex-direction:column;
-}
-.article-card:hover {
-  transform:translateY(-3px); box-shadow:var(--shadow-lg);
-}
-.card-image { height:170px; position:relative; overflow:hidden; }
-.card-image .img-placeholder {
-  width:100%; height:100%; display:flex; align-items:center; justify-content:center;
-  font-size:3rem; color:white;
-}
-.img-1 { background:linear-gradient(135deg, #3b82f6, #1d4ed8); }
-.img-2 { background:linear-gradient(135deg, #10b981, #059669); }
-.img-3 { background:linear-gradient(135deg, #f59e0b, #d97706); }
-.img-4 { background:linear-gradient(135deg, #8b5cf6, #6d28d9); }
-.card-badge {
-  position:absolute; top:12px; left:12px;
-  padding:4px 12px; border-radius:12px; font-size:0.7rem;
-  font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color:white;
-}
-.badge-1 { background:var(--cat-1); } .badge-2 { background:var(--cat-2); }
-.badge-3 { background:var(--cat-3); } .badge-4 { background:var(--cat-4); }
-.card-body { padding:18px; flex:1; display:flex; flex-direction:column; }
-.card-date { font-size:0.78rem; color:var(--text-secondary); margin-bottom:6px; }
-.card-title { font-size:1.1rem; font-weight:700; margin-bottom:8px; line-height:1.4; }
-.card-preview { font-size:0.85rem; color:var(--text-secondary); line-height:1.5; flex:1;
-  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-.card-footer { display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding-top:12px; border-top:1px solid var(--border); }
-.card-readmore { font-size:0.8rem; color:var(--accent); font-weight:600; }
+/* MAIN */
+.container{width:100%;padding:20px 32px 40px}
+.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px}
 
-/* ===== FULLSCREEN MODAL ===== */
-.modal-overlay {
-  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5);
-  z-index:200; backdrop-filter:blur(4px);
-}
-.modal-overlay.show { display:flex; }
-.modal {
-  background:var(--card-bg); width:100%; height:100%;
-  display:flex; flex-direction:column; position:relative;
-}
-.modal-topbar {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:14px 28px; border-bottom:1px solid var(--border);
-  background:var(--card-bg); flex-shrink:0;
-}
-.modal-topbar .breadcrumb { font-size:0.85rem; color:var(--text-secondary); }
-.modal-topbar .breadcrumb span { color:var(--accent); font-weight:600; }
-.modal-close {
-  width:36px; height:36px; border-radius:50%; border:none;
-  background:var(--bg); cursor:pointer; font-size:1.2rem;
-  display:flex; align-items:center; justify-content:center;
-  transition:background 0.2s; flex-shrink:0;
-}
-.modal-close:hover { background:#e5e7eb; }
-.modal-scroll {
-  flex:1; overflow-y:auto; padding:0;
-}
-.modal-article {
-  max-width: 900px; margin:0 auto; padding:32px 40px 60px;
-}
-.modal-article h1 { font-size:1.8rem; font-weight:700; margin-bottom:12px; line-height:1.3; }
-.modal-article .article-meta {
-  color:var(--text-secondary); font-size:0.9rem; margin-bottom:28px;
-  padding-bottom:20px; border-bottom:2px solid var(--border);
-}
-.modal-article h2 { font-size:1.3rem; margin:1.5em 0 0.6em; padding-bottom:6px; border-bottom:2px solid var(--border); }
-.modal-article h3 { font-size:1.1rem; margin:1.2em 0 0.5em; }
-.modal-article p { margin:0.7em 0; font-size:1rem; line-height:1.85; }
-.modal-article ul, .modal-article ol { margin:0.5em 0; padding-left:1.8em; }
-.modal-article li { margin:0.3em 0; line-height:1.7; }
-.modal-article code { background:#f1f5f9; padding:2px 6px; border-radius:4px; font-size:0.9em; }
-.modal-article pre { background:#1e293b; color:#e2e8f0; padding:16px 20px; border-radius:8px; overflow-x:auto; margin:1em 0; font-size:0.85em; line-height:1.6; }
-.modal-article blockquote {
-  border-left:3px solid var(--accent); padding:8px 18px;
-  margin:1em 0; background:#fef2f2; border-radius:0 6px 6px 0; color:#991b1b;
-}
-.modal-article a { color:var(--accent); word-break:break-all; }
-.modal-article table { width:100%; border-collapse:collapse; margin:1em 0; font-size:0.9rem; }
-.modal-article th, .modal-article td { border:1px solid var(--border); padding:10px 14px; text-align:left; }
-.modal-article th { background:#f8fafc; font-weight:600; }
-.modal-article tr:hover { background:#f8fafc; }
-.modal-article hr { border:none; border-top:1px solid var(--border); margin:1.5em 0; }
-.modal-article strong { color:var(--text); font-weight:700; }
-.modal-article img { max-width:100%; border-radius:8px; margin:8px 0; }
+/* CARD */
+.card{background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:all .25s;border:1px solid var(--border);display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.card-img{height:170px;position:relative;overflow:hidden}
+.card-img .img-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff}
+.img-1{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.img-2{background:linear-gradient(135deg,#10b981,#059669)}
+.img-3{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.img-4{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+.card-badge{position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:12px;font-size:.68rem;font-weight:600;color:#fff;letter-spacing:.5px}
+.badge-1{background:var(--c1)}.badge-2{background:var(--c2)}.badge-3{background:var(--c3)}.badge-4{background:var(--c4)}
+.card-body{padding:18px;flex:1;display:flex;flex-direction:column}
+.card-date{font-size:.78rem;color:var(--text2);margin-bottom:6px}
+.card-title{font-size:1.05rem;font-weight:700;margin-bottom:6px;line-height:1.4}
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--border)}
+.card-more{font-size:.78rem;color:var(--accent);font-weight:600}
 
-/* ===== LOADING / EMPTY ===== */
-.loading { text-align:center; padding:80px 20px; }
-.spinner { width:40px; height:40px; margin:0 auto 16px; border:3px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; }
-@keyframes spin { to { transform:rotate(360deg); } }
-.empty-state { text-align:center; padding:80px 20px; color:var(--text-secondary); }
-.empty-state .icon { font-size:4rem; margin-bottom:16px; }
-.empty-state h3 { font-size:1.2rem; margin-bottom:8px; color:var(--text); }
+/* EMPTY/LOADING */
+.loading{text-align:center;padding:80px 20px}
+.spinner{width:40px;height:40px;margin:0 auto 16px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{text-align:center;padding:80px 20px;color:var(--text2)}
+.empty .icon{font-size:4rem;margin-bottom:16px}
+.empty h3{font-size:1.2rem;margin-bottom:8px;color:var(--text)}
 
-/* ===== FOOTER ===== */
-footer {
-  text-align:center; padding:28px; color:var(--text-secondary);
-  font-size:0.8rem; border-top:1px solid var(--border);
-}
-footer a { color:var(--accent); text-decoration:none; }
+/* FULLSCREEN READER */
+.reader-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;backdrop-filter:blur(4px)}
+.reader-overlay.show{display:flex}
+.reader{background:var(--card-bg);width:100%;height:100%;display:flex;flex-direction:column}
+.reader-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--border);background:var(--card-bg);flex-shrink:0;gap:12px;flex-wrap:wrap}
+.reader-nav-group{display:flex;align-items:center;gap:6px}
+.reader-nav-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--card-bg);cursor:pointer;font-size:1rem;color:var(--text);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.reader-nav-btn:hover{border-color:var(--accent);color:var(--accent)}
+.reader-nav-btn:disabled{opacity:.3;cursor:default}
+.reader-info{font-size:.82rem;color:var(--text2)}
+.reader-info strong{color:var(--text)}
+.reader-cat-tabs{display:flex;gap:4px}
+.reader-cat-tab{padding:4px 12px;border-radius:14px;border:1.5px solid var(--border);background:transparent;cursor:pointer;font-size:.75rem;font-weight:500;transition:all .2s;color:var(--text2);white-space:nowrap}
+.reader-cat-tab:hover{border-color:var(--accent);color:var(--accent)}
+.reader-cat-tab.active{color:#fff;border-color:transparent}
+.reader-cat-tab[data-cat="all"].active{background:var(--accent)}
+.reader-cat-tab[data-cat="1"].active{background:var(--c1)}
+.reader-cat-tab[data-cat="2"].active{background:var(--c2)}
+.reader-cat-tab[data-cat="3"].active{background:var(--c3)}
+.reader-cat-tab[data-cat="4"].active{background:var(--c4)}
+.reader-close{width:36px;height:36px;border-radius:50%;border:none;background:var(--bg);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+.reader-close:hover{background:#e5e7eb}
+.reader-body{flex:1;overflow-y:auto}
+.reader-article{max-width:900px;margin:0 auto;padding:32px 40px 80px}
+.reader-article h1{font-size:1.8rem;font-weight:700;margin-bottom:10px;line-height:1.3}
+.reader-article .meta{color:var(--text2);font-size:.9rem;margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid var(--border)}
+.reader-article h2{font-size:1.3rem;margin:1.4em 0 .6em;padding-bottom:6px;border-bottom:2px solid var(--border)}
+.reader-article h3{font-size:1.1rem;margin:1.2em 0 .5em}
+.reader-article p{margin:.7em 0;font-size:1rem;line-height:1.85}
+.reader-article ul,.reader-article ol{margin:.5em 0;padding-left:1.8em}
+.reader-article li{margin:.3em 0;line-height:1.7}
+.reader-article code{background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:.9em}
+.reader-article pre{background:#1e293b;color:#e2e8f0;padding:16px 20px;border-radius:8px;overflow-x:auto;margin:1em 0;font-size:.85em;line-height:1.6}
+.reader-article blockquote{border-left:3px solid var(--accent);padding:8px 18px;margin:1em 0;background:#fef2f2;border-radius:0 6px 6px 0}
+.reader-article a{color:var(--accent);word-break:break-all}
+.reader-article table{width:100%;border-collapse:collapse;margin:1em 0;font-size:.9rem}
+.reader-article th,.reader-article td{border:1px solid var(--border);padding:10px 14px;text-align:left}
+.reader-article th{background:#f8fafc;font-weight:600}
+.reader-article tr:hover{background:#f8fafc}
+.reader-article hr{border:none;border-top:1px solid var(--border);margin:1.5em 0}
+.reader-article strong{font-weight:700}
+.reader-article img{max-width:100%;border-radius:8px;margin:8px 0}
 
-/* ===== RESPONSIVE ===== */
-@media (max-width:768px) {
-  .header-inner { flex-direction:column; text-align:center; padding:14px 16px; }
-  .header-stats { justify-content:center; }
-  .search-box input { width:140px; }
-  .controls-bar { flex-direction:column; align-items:stretch; padding:16px 16px 0; }
-  .category-tabs { justify-content:center; }
-  .date-nav { justify-content:center; }
-  .container { padding:16px; }
-  .articles-grid { grid-template-columns:1fr; }
-  .modal-article { padding:20px; }
-  .modal-topbar { padding:12px 16px; }
+/* BOTTOM NAV */
+.reader-bottom{display:flex;justify-content:center;gap:16px;padding:16px 20px;border-top:1px solid var(--border);background:var(--card-bg);flex-shrink:0}
+.reader-bottom button{padding:8px 24px;border-radius:20px;border:1.5px solid var(--border);background:var(--card-bg);cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text)}
+.reader-bottom button:hover{border-color:var(--accent);color:var(--accent)}
+.reader-bottom button:disabled{opacity:.3;cursor:default}
+
+footer{text-align:center;padding:28px;color:var(--text2);font-size:.8rem;border-top:1px solid var(--border)}
+footer a{color:var(--accent);text-decoration:none}
+
+@media(max-width:768px){
+  .header-inner{flex-direction:column;text-align:center;padding:14px 16px}
+  .header-stats{justify-content:center}
+  .controls-bar{flex-direction:column;align-items:stretch;padding:12px 16px 0}
+  .cat-tabs{justify-content:center}
+  .date-paginator{justify-content:center;align-self:center}
+  .container{padding:16px}
+  .articles-grid{grid-template-columns:1fr}
+  .reader-article{padding:20px}
+  .reader-topbar{padding:10px 14px;gap:8px}
+  .reader-cat-tabs{order:3;width:100%;justify-content:center}
 }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo-area">
-      <div class="logo-icon">🔩</div>
-      <div class="logo-text">
-        <h1>紧固件行业日报</h1>
-        <span>Fastener Industry Daily Intelligence</span>
-      </div>
-    </div>
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="搜索报告..." onkeyup="if(event.key==='Enter')doSearch()">
-      <button onclick="doSearch()">🔍</button>
-    </div>
-    <div class="header-stats">
-      <div class="stat"><div class="stat-num" id="totalReports">-</div><div class="stat-label">总报告</div></div>
-      <div class="stat"><div class="stat-num" id="totalDays">-</div><div class="stat-label">天数</div></div>
-      <div class="stat"><div class="stat-num" id="latestDate">-</div><div class="stat-label">最新</div></div>
-    </div>
+<div class="header-inner">
+  <div class="logo-area">
+    <div class="logo-icon">🔩</div>
+    <div class="logo-text"><h1>紧固件行业日报</h1><span>Fastener Industry Daily Intelligence</span></div>
   </div>
+  <div class="header-stats">
+    <div class="stat"><div class="stat-num" id="totalReports">-</div><div class="stat-label">总报告</div></div>
+    <div class="stat"><div class="stat-num" id="totalDays">-</div><div class="stat-label">天数</div></div>
+    <div class="stat"><div class="stat-num" id="latestDate">-</div><div class="stat-label">最新</div></div>
+  </div>
+</div>
 </header>
 
 <div class="controls-bar">
-  <div class="category-tabs">
-    <button class="cat-tab active" data-cat="all" onclick="filterCategory('all')">全部</button>
-    <button class="cat-tab" data-cat="1" onclick="filterCategory('1')"><span class="dot dot-1"></span>产品竞品</button>
-    <button class="cat-tab" data-cat="2" onclick="filterCategory('2')"><span class="dot dot-2"></span>原材料价格</button>
-    <button class="cat-tab" data-cat="3" onclick="filterCategory('3')"><span class="dot dot-3"></span>海外贸易</button>
-    <button class="cat-tab" data-cat="4" onclick="filterCategory('4')"><span class="dot dot-4"></span>行业趋势</button>
+  <div class="cat-tabs">
+    <button class="cat-tab active" data-cat="all" onclick="setCat('all')">全部</button>
+    <button class="cat-tab" data-cat="1" onclick="setCat('1')"><span class="cat-dot" style="background:var(--c1)"></span>产品竞品</button>
+    <button class="cat-tab" data-cat="2" onclick="setCat('2')"><span class="cat-dot" style="background:var(--c2)"></span>原材料价格</button>
+    <button class="cat-tab" data-cat="3" onclick="setCat('3')"><span class="cat-dot" style="background:var(--c3)"></span>海外贸易</button>
+    <button class="cat-tab" data-cat="4" onclick="setCat('4')"><span class="cat-dot" style="background:var(--c4)"></span>行业趋势</button>
   </div>
-  <div class="date-nav">
-    <button onclick="navDate(-1)">&#9664;</button>
-    <select id="dateSelect" onchange="selectDate(this.value)"></select>
-    <button onclick="navDate(1)">&#9654;</button>
+  <div class="date-paginator">
+    <button onclick="navMainDate(-1)" title="前一天">&#9664;</button>
+    <div class="date-display" id="dateDisplay" onclick="toggleAllDates()"></div>
+    <button onclick="navMainDate(1)" title="后一天">&#9654;</button>
   </div>
 </div>
 
-<div class="container" id="mainContent">
-  <div class="loading"><div class="spinner"></div><p>加载报告中...</p></div>
-</div>
+<div class="container" id="mainContent"><div class="loading"><div class="spinner"></div><p>加载中...</p></div></div>
 
-<footer>
-  <p>Powered by <a href="https://github.com/Robetor-lee/fastener-daily-reports" target="_blank">Hermes Agent</a> · 自动生成于 Windows Server · 每日 10:00 / 11:00 / 14:00 / 17:00 更新</p>
-</footer>
+<footer><p>Powered by <a href="https://github.com/Robetor-lee/fastener-daily-reports" target="_blank">Hermes Agent</a> · 自动生成 · 每日 10:00/11:00/14:00/17:00 更新</p></footer>
 
-<!-- FULLSCREEN MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <div class="modal-topbar">
-      <div class="breadcrumb" id="modalBreadcrumb"></div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+<!-- READER -->
+<div class="reader-overlay" id="readerOverlay">
+<div class="reader">
+  <div class="reader-topbar">
+    <div class="reader-nav-group">
+      <button class="reader-nav-btn" id="readerPrev" onclick="readerNav(-1)" title="上一篇">&#9664;</button>
+      <span class="reader-info" id="readerInfo"></span>
+      <button class="reader-nav-btn" id="readerNext" onclick="readerNav(1)" title="下一篇">&#9654;</button>
     </div>
-    <div class="modal-scroll" id="modalScroll">
-      <div class="modal-article" id="modalBody">
-        <div class="loading"><div class="spinner"></div><p>加载中...</p></div>
-      </div>
+    <div class="reader-cat-tabs" id="readerCats">
+      <button class="reader-cat-tab active" data-cat="all" onclick="readerSetCat('all')">全部</button>
+      <button class="reader-cat-tab" data-cat="1" onclick="readerSetCat('1')">产品竞品</button>
+      <button class="reader-cat-tab" data-cat="2" onclick="readerSetCat('2')">原材料</button>
+      <button class="reader-cat-tab" data-cat="3" onclick="readerSetCat('3')">海外贸易</button>
+      <button class="reader-cat-tab" data-cat="4" onclick="readerSetCat('4')">行业趋势</button>
     </div>
+    <button class="reader-close" onclick="closeReader()">✕</button>
   </div>
+  <div class="reader-body" id="readerBody">
+    <div class="reader-article"><div class="loading"><div class="spinner"></div></div></div>
+  </div>
+  <div class="reader-bottom">
+    <button id="readerPrev2" onclick="readerNav(-1)">← 上一篇</button>
+    <button id="readerNext2" onclick="readerNav(1)">下一篇 →</button>
+  </div>
+</div>
 </div>
 
 <script>
-var REPO_RAW = 'https://raw.githubusercontent.com/Robetor-lee/fastener-daily-reports/main';
-var CAT_MAP = {
-  '产品目录竞品搜索': {cat:'1', emoji:'📦', label:'产品竞品', icon:'🔍'},
-  '国内原材料与竞品价格': {cat:'2', emoji:'💰', label:'原材料价格', icon:'📊'},
-  '国内原材料_竞品价格': {cat:'2', emoji:'💰', label:'原材料价格', icon:'📊'},
-  '海外出口与贸易动态': {cat:'3', emoji:'🚢', label:'海外贸易', icon:'🌍'},
-  '海外出口_贸易动态': {cat:'3', emoji:'🚢', label:'海外贸易', icon:'🌍'},
-  '紧固件行业趋势周报': {cat:'4', emoji:'🔬', label:'行业趋势', icon:'📈'},
+var RAW = 'https://raw.githubusercontent.com/Robetor-lee/fastener-daily-reports/main';
+var CM = {
+  '产品目录竞品搜索':{c:'1',e:'📦',l:'产品竞品',i:'🔍'},
+  '国内原材料与竞品价格':{c:'2',e:'💰',l:'原材料价格',i:'📊'},
+  '国内原材料_竞品价格':{c:'2',e:'💰',l:'原材料价格',i:'📊'},
+  '海外出口与贸易动态':{c:'3',e:'🚢',l:'海外贸易',i:'🌍'},
+  '海外出口_贸易动态':{c:'3',e:'🚢',l:'海外贸易',i:'🌍'},
+  '紧固件行业趋势周报':{c:'4',e:'🔬',l:'行业趋势',i:'📈'}
 };
-var allReports = [];
-var currentCat = 'all';
-var currentDate = 'all';
-var searchQuery = '';
+var all=[], dates=[], currentCat='all', currentDate='', showAllDates=false;
+var readerList=[], readerIdx=-1, readerCat='all';
 
-function getCat(r) {
-  for (var k in CAT_MAP) {
-    if (r.name === k || r.name.indexOf(k.replace(/_/g,' ')) !== -1) return CAT_MAP[k];
-  }
-  return {cat:'0', emoji:'📄', label:'其他', icon:'📄'};
-}
+function ci(r){for(var k in CM){if(r.name===k||r.name.indexOf(k.replace(/_/g,' '))!==-1)return CM[k];}return{c:'0',e:'📄',l:'其他',i:'📄'};}
 
-async function init() {
-  try {
-    var r = await fetch(REPO_RAW + '/reports/index.json');
-    allReports = await r.json();
-  } catch(e) { allReports = []; }
-
-  var dates = [...new Set(allReports.map(function(x){return x.date;}))].sort().reverse();
-  document.getElementById('totalReports').textContent = allReports.length;
-  document.getElementById('totalDays').textContent = dates.length;
-  document.getElementById('latestDate').textContent = dates[0] || '-';
-
-  var sel = document.getElementById('dateSelect');
-  sel.innerHTML = '<option value="all">全部日期</option>';
-  dates.forEach(function(d){ sel.innerHTML += '<option value="'+d+'">'+d+'</option>'; });
-
-  var today = new Date().toISOString().slice(0,10);
-  if (dates.indexOf(today) !== -1) { sel.value = today; currentDate = today; }
-
+async function init(){
+  try{var r=await fetch(RAW+'/reports/index.json');all=await r.json();}catch(e){all=[];}
+  dates=[...new Set(all.map(function(x){return x.date;}))].sort().reverse();
+  document.getElementById('totalReports').textContent=all.length;
+  document.getElementById('totalDays').textContent=dates.length;
+  document.getElementById('latestDate').textContent=dates[0]||'-';
+  if(dates.length)currentDate=dates[0];
+  updateDateDisplay();
   render();
 }
 
-function filterReports() {
-  return allReports.filter(function(r){
-    if (currentCat !== 'all' && getCat(r).cat !== currentCat) return false;
-    if (currentDate !== 'all' && r.date !== currentDate) return false;
-    if (searchQuery) {
-      var q = searchQuery.toLowerCase();
-      if (r.name.toLowerCase().indexOf(q) === -1 && r.date.indexOf(q) === -1) return false;
-    }
+function updateDateDisplay(){
+  var d=document.getElementById('dateDisplay');
+  d.textContent=showAllDates?'📅 全部日期 ('+dates.length+'天)':'📅 '+currentDate;
+}
+
+function toggleAllDates(){showAllDates=!showAllDates;updateDateDisplay();render();}
+
+function navMainDate(dir){
+  showAllDates=false;
+  var idx=dates.indexOf(currentDate);
+  if(idx===-1)idx=0;else idx=Math.max(0,Math.min(dates.length-1,idx+dir));
+  currentDate=dates[idx];updateDateDisplay();render();
+}
+
+function setCat(c){
+  currentCat=c;
+  var tabs=document.querySelectorAll('.cat-tab');
+  for(var i=0;i<tabs.length;i++)tabs[i].classList.remove('active');
+  document.querySelector('.cat-tab[data-cat="'+c+'"]').classList.add('active');
+  render();
+}
+
+function filtered(){
+  return all.filter(function(r){
+    if(currentCat!=='all'&&ci(r).c!==currentCat)return false;
+    if(!showAllDates&&r.date!==currentDate)return false;
     return true;
   });
 }
 
-function render() {
-  var filtered = filterReports();
-  var c = document.getElementById('mainContent');
+function render(){
+  var f=filtered(),c=document.getElementById('mainContent');
+  if(!all.length){c.innerHTML='<div class="empty"><div class="icon">📭</div><h3>暂无报告</h3><p>报告将在每日任务执行后自动更新</p></div>';return;}
+  if(!f.length){c.innerHTML='<div class="empty"><div class="icon">🔍</div><h3>该日期无报告</h3><p>'+currentDate+' 没有匹配的报告</p></div>';return;}
 
-  if (allReports.length === 0) {
-    c.innerHTML = '<div class="empty-state"><div class="icon">📭</div><h3>暂无报告</h3><p>报告将在每日定时任务执行后自动更新</p></div>';
-    return;
-  }
-  if (filtered.length === 0) {
-    c.innerHTML = '<div class="empty-state"><div class="icon">🔍</div><h3>没有匹配的报告</h3><p>尝试调整筛选条件</p></div>';
-    return;
-  }
-
-  var grouped = {};
-  filtered.forEach(function(r){
-    if (!grouped[r.date]) grouped[r.date] = [];
-    grouped[r.date].push(r);
-  });
-
-  var keys = Object.keys(grouped).sort(function(a,b){return b.localeCompare(a);});
-  var h = '';
+  var grouped={};
+  f.forEach(function(r){if(!grouped[r.date])grouped[r.date]=[];grouped[r.date].push(r);});
+  var keys=Object.keys(grouped).sort(function(a,b){return b.localeCompare(a);});
+  var h='';
   keys.forEach(function(date){
-    var reports = grouped[date];
-    h += '<div class="date-group"><h3>📆 ' + date + '（' + reports.length + '篇）</h3><div class="articles-grid">';
-    reports.forEach(function(r){
-      var ci = getCat(r);
-      h += '<div class="article-card" onclick="openReport(\''+esc(r.path)+'\',\''+esc(r.name)+'\',\''+r.date+'\')">';
-      h += '<div class="card-image"><div class="img-placeholder img-'+ci.cat+'">'+ci.emoji+'</div>';
-      h += '<span class="card-badge badge-'+ci.cat+'">'+ci.label+'</span></div>';
-      h += '<div class="card-body"><div class="card-date">📅 '+r.date+'</div>';
-      h += '<div class="card-title">'+ci.icon+' '+escHtml(r.name)+'</div>';
-      h += '<div class="card-preview">点击阅读完整报告</div>';
-      h += '<div class="card-footer"><span class="card-readmore">阅读全文 →</span></div>';
-      h += '</div></div>';
+    if(!showAllDates&&keys.length===1)h+='';else h+='<div style="padding:8px 0;font-size:.95rem;font-weight:600;color:var(--text2);border-bottom:1px solid var(--border);margin-bottom:16px">📆 '+date+'（'+grouped[date].length+'篇）</div>';
+    h+='<div class="articles-grid">';
+    grouped[date].forEach(function(r,i){
+      var c=ci(r);
+      h+='<div class="card" onclick="openReader('+keys.indexOf(date)+','+i+')">';
+      h+='<div class="card-img"><div class="img-bg img-'+c.c+'">'+c.e+'</div><span class="card-badge badge-'+c.c+'">'+c.l+'</span></div>';
+      h+='<div class="card-body"><div class="card-date">📅 '+r.date+'</div><div class="card-title">'+c.i+' '+eHtml(r.name)+'</div>';
+      h+='<div class="card-footer"><span class="card-more">阅读全文 →</span></div></div></div>';
     });
-    h += '</div></div>';
+    h+='</div>';
   });
-  c.innerHTML = h;
+  c.innerHTML=h;
 }
 
-function filterCategory(cat) {
-  currentCat = cat;
-  var tabs = document.querySelectorAll('.cat-tab');
-  for (var i=0; i<tabs.length; i++) tabs[i].classList.remove('active');
-  document.querySelector('.cat-tab[data-cat="'+cat+'"]').classList.add('active');
-  render();
+/* ====== READER ====== */
+function buildReaderList(){
+  readerList=[];
+  var f=all.filter(function(r){
+    if(readerCat!=='all'&&ci(r).c!==readerCat)return false;
+    return true;
+  });
+  // Sort by date desc, then by category order
+  f.sort(function(a,b){
+    if(a.date!==b.date)return b.date.localeCompare(a.date);
+    return parseInt(ci(a).c)-parseInt(ci(b).c);
+  });
+  readerList=f;
 }
 
-function selectDate(v) { currentDate = v; render(); }
-
-function navDate(dir) {
-  var sel = document.getElementById('dateSelect');
-  var opts = [];
-  for (var i=0; i<sel.options.length; i++) { if (sel.options[i].value !== 'all') opts.push(sel.options[i]); }
-  if (opts.length === 0) return;
-  var idx = -1;
-  for (var j=0; j<opts.length; j++) { if (opts[j].value === currentDate) { idx = j; break; } }
-  if (idx === -1) idx = dir > 0 ? opts.length-1 : 0;
-  else idx = Math.max(0, Math.min(opts.length-1, idx+dir));
-  sel.value = opts[idx].value;
-  currentDate = opts[idx].value;
-  render();
+function openReader(dateIdx,cardIdx){
+  // Build list filtered by main page's current selection
+  var f=filtered();
+  f.sort(function(a,b){return parseInt(ci(a).c)-parseInt(ci(b).c);});
+  readerList=f;
+  readerCat=currentCat;
+  readerIdx=cardIdx;
+  updateReaderTabs();
+  showReader();
 }
 
-function doSearch() {
-  searchQuery = document.getElementById('searchInput').value.trim();
-  render();
+function readerSetCat(c){
+  readerCat=c;
+  updateReaderTabs();
+  buildReaderList();
+  readerIdx=0;
+  showReader();
 }
 
-function openReport(path, name, date) {
-  var overlay = document.getElementById('modalOverlay');
-  var body = document.getElementById('modalBody');
-  var ci = getCat({name:name});
+function updateReaderTabs(){
+  var tabs=document.querySelectorAll('#readerCats .reader-cat-tab');
+  for(var i=0;i<tabs.length;i++)tabs[i].classList.remove('active');
+  var t=document.querySelector('#readerCats .reader-cat-tab[data-cat="'+readerCat+'"]');
+  if(t)t.classList.add('active');
+}
 
-  document.getElementById('modalBreadcrumb').innerHTML =
-    ci.emoji + ' <span>'+ci.label+'</span> · '+date;
-  body.innerHTML = '<div class="loading"><div class="spinner"></div><p>加载中...</p></div>';
-  overlay.classList.add('show');
-  document.body.style.overflow = 'hidden';
+function showReader(){
+  if(readerIdx<0||readerIdx>=readerList.length){closeReader();return;}
+  var r=readerList[readerIdx],c=ci(r);
+  document.getElementById('readerOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
 
-  var url = REPO_RAW + '/' + path;
-  fetch(url).then(function(resp){
-    if (!resp.ok) throw new Error('HTTP '+resp.status);
-    return resp.text();
-  }).then(function(md){
-    // Split off the cron header (before "## Response" or "---" separator)
-    var parts = md.split('## Response');
-    var content = parts.length > 1 ? parts.slice(1).join('## Response') : md;
-    // Also strip leading cron metadata (lines before first #)
-    content = content.replace(/^# Cron Job:.*?\n\n## Prompt[\s\S]*?(?=---\n)/, '');
-    // Strip leading --- separator
-    content = content.replace(/^---\s*\n/, '');
+  // Nav buttons
+  document.getElementById('readerPrev').disabled=(readerIdx===0);
+  document.getElementById('readerNext').disabled=(readerIdx>=readerList.length-1);
+  document.getElementById('readerPrev2').disabled=(readerIdx===0);
+  document.getElementById('readerNext2').disabled=(readerIdx>=readerList.length-1);
 
-    body.innerHTML =
-      '<h1>'+ci.icon+' '+escHtml(name)+'</h1>' +
-      '<div class="article-meta">📅 '+date+' · 自动生成 · '+ci.label+'</div>' +
-      renderMarkdown(content);
+  // Info
+  document.getElementById('readerInfo').innerHTML='<strong>'+(readerIdx+1)+'</strong> / '+readerList.length+' · '+c.l+' · '+r.date;
+
+  // Content
+  var body=document.getElementById('readerBody');
+  body.innerHTML='<div class="reader-article"><div class="loading"><div class="spinner"></div></div></div>';
+  body.scrollTop=0;
+
+  fetch(RAW+'/'+r.path).then(function(resp){return resp.text();}).then(function(md){
+    var content=cleanMarkdown(md);
+    body.innerHTML='<div class="reader-article">'+
+      '<h1>'+c.i+' '+eHtml(r.name)+'</h1>'+
+      '<div class="meta">📅 '+r.date+' · 自动生成 · '+c.l+'</div>'+
+      renderMd(content)+
+      '</div>';
+    body.scrollTop=0;
   }).catch(function(e){
-    body.innerHTML = '<p style="color:var(--accent);padding:40px;text-align:center;">加载失败: '+escHtml(e.message)+'</p>';
+    body.innerHTML='<div class="reader-article"><p style="color:var(--accent);text-align:center;padding:60px">加载失败</p></div>';
   });
 }
 
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('show');
-  document.body.style.overflow = '';
+function readerNav(dir){
+  var next=readerIdx+dir;
+  if(next<0||next>=readerList.length)return;
+  readerIdx=next;
+  showReader();
 }
-document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape') closeModal();
+
+function closeReader(){
+  document.getElementById('readerOverlay').classList.remove('show');
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeReader();
+  if(document.getElementById('readerOverlay').classList.contains('show')){
+    if(e.key==='ArrowLeft')readerNav(-1);
+    if(e.key==='ArrowRight')readerNav(1);
+  }else{
+    if(e.key==='ArrowLeft')navMainDate(-1);
+    if(e.key==='ArrowRight')navMainDate(1);
+  }
 });
 
-function esc(s) { return s.replace(/'/g,"\\'").replace(/\\/g,"\\\\"); }
-function escHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+/* ====== MARKDOWN ====== */
+function cleanMarkdown(md){
+  // Remove cron metadata header
+  md=md.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+  // Find the real content: after "## Response" or after the first "---" separator in the report
+  var parts=md.split('## Response');
+  var content=parts.length>1?parts.slice(1).join('## Response'):md;
+  // Remove "## Prompt" block if present
+  content=content.replace(/## Prompt[\s\S]*?(?=---\n)/,'');
+  // Remove leading "---" separator line
+  content=content.replace(/^---\s*\n/,'');
+  // Remove "# Cron Job:" header lines
+  content=content.replace(/^# Cron Job:.*$/gm,'');
+  content=content.replace(/^\*\*Job ID:\*\*.*$/gm,'');
+  content=content.replace(/^\*\*Run Time:\*\*.*$/gm,'');
+  content=content.replace(/^\*\*Schedule:\*\*.*$/gm,'');
+  content=content.replace(/^\*\*Mode:\*\*.*$/gm,'');
+  content=content.replace(/^\*\*Status:\*\*.*$/gm,'');
+  // Trim
+  return content.trim();
 }
 
-function renderMarkdown(md) {
-  // Normalize line endings
-  md = md.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+function renderMd(md){
+  md=md.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+  var cbs=[];
+  md=md.replace(/```(\w*)\n([\s\S]*?)```/g,function(_,lang,code){cbs.push('<pre><code>'+eHtml(code.trim())+'</code></pre>');return'%%CB'+cbs.length+'%%';});
+  var ics=[];
+  md=md.replace(/`([^`]+)`/g,function(_,code){ics.push('<code>'+eHtml(code)+'</code>');return'%%IC'+ics.length+'%%';});
 
-  // Escape HTML in code blocks first
-  var codeBlocks = [];
-  md = md.replace(/```(\w*)\n([\s\S]*?)```/g, function(_, lang, code){
-    codeBlocks.push('<pre><code>' + escHtml(code.trim()) + '</code></pre>');
-    return '%%CODEBLOCK_' + (codeBlocks.length-1) + '%%';
-  });
+  md=md.replace(/^#### (.+)$/gm,'<h4>$1</h4>');
+  md=md.replace(/^### (.+)$/gm,'<h3>$1</h3>');
+  md=md.replace(/^## (.+)$/gm,'<h2>$1</h2>');
+  md=md.replace(/^# (.+)$/gm,'<h1>$1</h1>');
+  md=md.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+  md=md.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,'<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:8px 0">');
+  md=md.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank">$1</a>');
+  md=md.replace(/^---\s*$/gm,'<hr>');
+  md=md.replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>');
 
-  // Inline code
-  var inlineCodes = [];
-  md = md.replace(/`([^`]+)`/g, function(_, code){
-    inlineCodes.push('<code>' + escHtml(code) + '</code>');
-    return '%%INLINE_' + (inlineCodes.length-1) + '%%';
-  });
-
-  // Headers
-  md = md.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
-  md = md.replace(/^### (.+)$/gm, '<h3>$1</h3>');
-  md = md.replace(/^## (.+)$/gm, '<h2>$1</h2>');
-  md = md.replace(/^# (.+)$/gm, '<h1>$1</h1>');
-
-  // Bold, italic
-  md = md.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-  md = md.replace(/\*(.+?)\*/g, '<em>$1</em>');
-
-  // Links and images
-  md = md.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:8px 0;">');
-  md = md.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-
-  // Horizontal rules
-  md = md.replace(/^---\s*$/gm, '<hr>');
-  md = md.replace(/^\*\*\*\s*$/gm, '<hr>');
-
-  // Blockquotes
-  md = md.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
-  md = md.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
-
-  // Tables: convert pipe tables to HTML
-  var lines = md.split('\n');
-  var result = [];
-  var inTable = false;
-  var tableRows = [];
-  var headerRow = null;
-  var alignRow = null;
-
-  for (var i = 0; i < lines.length; i++) {
-    var line = lines[i];
-    var trimmed = line.trim();
-
-    // Detect table rows
-    var isPipeRow = /^\|.+\|$/.test(trimmed);
-    var isAlignRow = /^\|[\s\-:]+\|$/.test(trimmed);
-
-    if (isAlignRow && (inTable || (i > 0 && /^\|.+\|$/.test(lines[i-1].trim())))) {
-      // This is an alignment row
-      if (!inTable) {
-        inTable = true;
-        headerRow = lines[i-1].trim();
-        tableRows = [];
-      }
-      alignRow = trimmed;
-      continue;
+  // Tables
+  var lines=md.split('\n'),out=[],tRows=[],tHeader=null;
+  for(var i=0;i<lines.length;i++){
+    var ln=lines[i].trim();
+    if(/^\|.+\|$/.test(ln)&&!/^\|[\s\-:]+\|$/.test(ln)){
+      tRows.push(ln);continue;
     }
-
-    if (isPipeRow && !isAlignRow) {
-      if (!inTable) {
-        inTable = true;
-        headerRow = null;
-        alignRow = null;
-        tableRows = [];
-      }
-      tableRows.push(trimmed);
-      continue;
+    if(/^\|[\s\-:]+\|$/.test(ln)&&tRows.length===1){tHeader=tRows[0];tRows=[];continue;}
+    if(tRows.length){
+      out.push(buildTbl(tRows,tHeader));
+      tRows=[];tHeader=null;
     }
-
-    // Not a table row - flush table if in one
-    if (inTable) {
-      result.push(buildTable(tableRows, headerRow));
-      inTable = false;
-      tableRows = [];
-      headerRow = null;
-      alignRow = null;
-    }
-
-    // Regular line
-    if (trimmed === '') {
-      result.push('');
-    } else if (/^<[a-z]/.test(trimmed)) {
-      result.push(trimmed);
-    } else {
-      result.push(trimmed);
-    }
+    out.push(ln);
   }
-  // Flush remaining table
-  if (inTable && tableRows.length > 0) {
-    result.push(buildTable(tableRows, headerRow));
+  if(tRows.length)out.push(buildTbl(tRows,tHeader));
+  var html=out.join('\n');
+
+  var fl=html.split('\n'),oo=[];
+  for(var j=0;j<fl.length;j++){
+    var l=fl[j].trim();
+    if(!l){oo.push('');continue;}
+    if(/^<(h[1-4]|ul|ol|li|pre|hr|blockquote|table|tr|th|td|p|img|div|a|strong|em|code)/.test(l)){oo.push(l);}
+    else if(/^%%(CB|IC)/.test(l)){oo.push(l);}
+    else{oo.push('<p>'+l+'</p>');}
   }
-
-  var html = result.join('\n');
-
-  // Paragraphs: wrap non-tag lines
-  var finalLines = html.split('\n');
-  var out = [];
-  for (var j = 0; j < finalLines.length; j++) {
-    var ln = finalLines[j].trim();
-    if (ln === '') { out.push(''); continue; }
-    if (/^<(h[1-4]|ul|ol|li|pre|hr|blockquote|table|tr|th|td|p|img|div|a|strong|em|code)/.test(ln)) {
-      out.push(ln);
-    } else if (/^%%(CODEBLOCK|INLINE)_/.test(ln)) {
-      out.push(ln);
-    } else {
-      out.push('<p>' + ln + '</p>');
-    }
-  }
-
-  html = out.join('\n');
-
-  // Restore code blocks and inline code
-  html = html.replace(/%%CODEBLOCK_(\d+)%%/g, function(_, i){ return codeBlocks[parseInt(i)]; });
-  html = html.replace(/%%INLINE_(\d+)%%/g, function(_, i){ return inlineCodes[parseInt(i)]; });
-
+  html=oo.join('\n');
+  html=html.replace(/%%CB(\d+)%%/g,function(_,i){return cbs[parseInt(i)-1];});
+  html=html.replace(/%%IC(\d+)%%/g,function(_,i){return ics[parseInt(i)-1];});
   return html;
 }
 
-function buildTable(rows, headerRow) {
-  if (rows.length === 0) return '';
-  var cells = rows[0].split('|').filter(function(c){ return c.trim() !== ''; });
-  var colCount = cells.length;
-  if (colCount === 0) return '';
-
-  var h = '<table>';
-  if (headerRow) {
-    h += '<thead><tr>';
-    var hcells = headerRow.split('|').filter(function(c){ return c.trim() !== ''; });
-    for (var i = 0; i < Math.min(hcells.length, colCount); i++) {
-      h += '<th>' + hcells[i].trim() + '</th>';
-    }
-    h += '</tr></thead><tbody>';
-    var startIdx = 1;
-  } else {
-    h += '<tbody>';
-    var startIdx = 0;
+function buildTbl(rows,header){
+  if(!rows.length)return'';
+  var cells=rows[0].split('|').filter(function(c){return c.trim()!=='';});
+  var n=cells.length;if(!n)return'';
+  var h='<table>';
+  if(header){
+    h+='<thead><tr>';
+    var hc=header.split('|').filter(function(c){return c.trim()!=='';});
+    for(var i=0;i<Math.min(hc.length,n);i++)h+='<th>'+hc[i].trim()+'</th>';
+    h+='</tr></thead><tbody>';
+  }else{h+='<tbody>';}
+  for(var r=header?0:0;r<rows.length;r++){
+    var rc=rows[r].split('|').filter(function(c){return c.trim()!=='';});
+    if(!rc.length)continue;
+    h+='<tr>';
+    for(var c=0;c<Math.min(rc.length,n);c++)h+='<td>'+rc[c].trim()+'</td>';
+    h+='</tr>';
   }
-
-  for (var r = startIdx; r < rows.length; r++) {
-    var rcells = rows[r].split('|').filter(function(c){ return c.trim() !== ''; });
-    if (rcells.length === 0) continue;
-    h += '<tr>';
-    for (var c = 0; c < Math.min(rcells.length, colCount); c++) {
-      h += '<td>' + rcells[c].trim() + '</td>';
-    }
-    h += '</tr>';
-  }
-  h += '</tbody></table>';
+  h+='</tbody></table>';
   return h;
 }
+
+function eHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 init();
 </script>
